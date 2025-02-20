@@ -1,18 +1,29 @@
 import { useState } from 'react';
 
 const AffirmationButton = () => {
-    const [quote, setQuote] = useState('You are more than enough');
-    const [theme, setTheme] = useState('default')
+    const quotes = [
+        "You are more than enough",
+        "You're getting there!",
+        "Look how far you've come",
+        "Be proud of yourself",
+        "I can't wait to see how good your life will be when you are as confident as you should be."
+    ];
+
+    const [count, setCount] = useState(0)
+    const [quote, setQuote] = useState(quotes[0]);
 
     const handleClick = () => {
-        setQuote("Believe in yourself");
-        setTheme('blue');
+        if (count < quotes.length) {
+            setCount(count + 1)
+            setQuote(quotes[count])
+        } else {
+        setCount(0)}
     };
 
     return (
         <div>
-            <button color={theme} type="button" onClick={handleClick}>
-                {quote}
+            <button type="button" onClick={handleClick}>
+             {quote}
             </button>
         </div>
     );
